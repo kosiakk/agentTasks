@@ -3,7 +3,7 @@ Agent Tasks plugin for TeamCity
 ===============================
 
 Allows to perform simple operations on a set of agents periodically (each day).
-For now, the only supported operations are: enable and disable.
+For now, the only supported operations are: enable/disable and authorize/unauthorize.
 The set of agents can only be defined by regexp pattern on agent name.
 
 
