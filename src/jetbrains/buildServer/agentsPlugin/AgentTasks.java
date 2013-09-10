@@ -86,10 +86,15 @@ public class AgentTasks {
               public boolean processItem(SBuildAgent sBuildAgent) {
                 if (regexp.matcher(sBuildAgent.getName()).find()) {
                   if ("enable".equals(taskName)) {
-                    sBuildAgent.setEnabled(true, null, "Enabled by agent tasks plugin");
-                  }
-                  if ("disable".equals(taskName)) {
-                    sBuildAgent.setEnabled(false, null, "Disabled by agent tasks plugin");
+                      sBuildAgent.setEnabled(true, null, "Enabled by agent tasks plugin");
+                  } else if ("disable".equals(taskName)) {
+                      sBuildAgent.setEnabled(false, null, "Disabled by agent tasks plugin");
+                  } else if ("unauthorize".equals(taskName)) {
+                      sBuildAgent.setAuthorized(false, null, "Unauthorized by agent tasks plugin");
+                  } else if ("authorize".equals(taskName)) {
+                      sBuildAgent.setAuthorized(true, null, "Authorized by agent tasks plugin");
+                  } else {
+                      Loggers.SERVER.warn("Failed to execute task: operation " + taskName + " is not supported");
                   }
                 }
                 return true;
